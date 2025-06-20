@@ -1,0 +1,351 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuoteVision Pro - Construction Quoting Tool</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏗️</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h1>🏗️ QuoteVision Pro</h1>
+            </div>
+            <div class="nav-links">
+                <a href="#demo">Demo</a>
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Transform Your Construction Quotes</h1>
+                <p>AI-powered 3D visualization with color-coded trade categorization. Win more bids with professional presentations that customers actually understand.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToDemo()">Try Free Demo</button>
+                    <button class="btn btn-secondary" onclick="scheduleDemo()">Schedule Demo</button>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">31%</span>
+                    <span class="stat-label">More Accurate Quotes</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">60%</span>
+                    <span class="stat-label">Time Saved</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">89%</span>
+                    <span class="stat-label">Customer Satisfaction</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Demo Section -->
+        <section id="demo" class="demo-section">
+            <h2>Interactive Demo</h2>
+            <p>Experience the power of visual construction quoting</p>
+            
+            <div class="main-content">
+                <div class="panel">
+                    <h3>Project Visualization</h3>
+                    <div class="project-canvas" id="projectCanvas">
+                        <div class="room kitchen" onclick="selectRoom('kitchen')">
+                            Kitchen<br><small>Electrical, Plumbing, Lighting</small>
+                        </div>
+                        <div class="room living" onclick="selectRoom('living')">
+                            Living Room<br><small>Electrical, Flooring, Painting</small>
+                        </div>
+                        <div class="room bathroom" onclick="selectRoom('bathroom')">
+                            Bathroom<br><small>Plumbing, HVAC, Lighting</small>
+                        </div>
+                        <div class="room bedroom" onclick="selectRoom('bedroom')">
+                            Bedroom<br><small>Flooring, Painting, Lighting</small>
+                        </div>
+                    </div>
+
+                    <h4>Select Trade to Highlight</h4>
+                    <div class="trade-selector">
+                        <div class="trade-button electrical" onclick="selectTrade('electrical')">
+                            💡 Electrical
+                        </div>
+                        <div class="trade-button plumbing" onclick="selectTrade('plumbing')">
+                            🚰 Plumbing
+                        </div>
+                        <div class="trade-button hvac" onclick="selectTrade('hvac')">
+                            🌡️ HVAC
+                        </div>
+                        <div class="trade-button flooring" onclick="selectTrade('flooring')">
+                            🏠 Flooring
+                        </div>
+                        <div class="trade-button lighting" onclick="selectTrade('lighting')">
+                            💫 Lighting
+                        </div>
+                        <div class="trade-button painting" onclick="selectTrade('painting')">
+                            🎨 Painting
+                        </div>
+                    </div>
+
+                    <div class="legend">
+                        <h4>Trade Color Legend</h4>
+                        <div class="legend-item">
+                            <div class="legend-color electrical-color"></div>
+                            <span>Electrical - Outlets, Wiring, Panels</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color plumbing-color"></div>
+                            <span>Plumbing - Pipes, Fixtures, Water Lines</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color hvac-color"></div>
+                            <span>HVAC - Ductwork, Units, Thermostats</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color flooring-color"></div>
+                            <span>Flooring - Materials, Installation</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color lighting-color"></div>
+                            <span>Lighting - Fixtures, Controls, LED</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color painting-color"></div>
+                            <span>Painting - Prep, Paint, Finish</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <h3>Real-Time Cost Calculator</h3>
+                    <div class="cost-breakdown" id="costBreakdown">
+                        <div class="cost-item">
+                            <div class="cost-label">
+                                <div class="cost-color electrical-color"></div>
+                                Electrical
+                            </div>
+                            <div class="cost-amount" id="electricalCost">$8,500</div>
+                        </div>
+                        <div class="cost-item">
+                            <div class="cost-label">
+                                <div class="cost-color plumbing-color"></div>
+                                Plumbing
+                            </div>
+                            <div class="cost-amount" id="plumbingCost">$12,200</div>
+                        </div>
+                        <div class="cost-item">
+                            <div class="cost-label">
+                                <div class="cost-color hvac-color"></div>
+                                HVAC
+                            </div>
+                            <div class="cost-amount" id="hvacCost">$15,600</div>
+                        </div>
+                        <div class="cost-item">
+                            <div class="cost-label">
+                                <div class="cost-color flooring-color"></div>
+                                Flooring
+                            </div>
+                            <div class="cost-amount" id="flooringCost">$9,800</div>
+                        </div>
+                        <div class="cost-item">
+                            <div class="cost-label">
+                                <div class="cost-color lighting-color"></div>
+                                Lighting
+                            </div>
+                            <div class="cost-amount" id="lightingCost">$6,400</div>
+                        </div>
+                        <div class="cost-item">
+                            <div class="cost-label">
+                                <div class="cost-color painting-color"></div>
+                                Painting
+                            </div>
+                            <div class="cost-amount" id="paintingCost">$4,200</div>
+                        </div>
+                        <div class="cost-item total">
+                            <div class="cost-label">
+                                <strong>Total Project Cost</strong>
+                            </div>
+                            <div class="cost-amount" id="totalCost">$56,700</div>
+                        </div>
+                    </div>
+
+                    <div class="calculator-controls">
+                        <div class="input-group">
+                            <label for="laborRate">Labor Rate ($/hour)</label>
+                            <input type="number" id="laborRate" value="85" onchange="updateCosts()">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="markupPercent">Markup Percentage</label>
+                            <input type="number" id="markupPercent" value="25" onchange="updateCosts()">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="projectType">Project Type</label>
+                            <select id="projectType" onchange="updateCosts()">
+                                <option value="luxury">Luxury Renovation</option>
+                                <option value="standard">Standard Renovation</option>
+                                <option value="commercial">Commercial Project</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quote-actions">
+                <h3>Professional Quote Generation</h3>
+                <div class="customer-form">
+                    <div class="form-group">
+                        <input type="text" id="customerName" placeholder="Customer Name">
+                        <input type="text" id="projectAddress" placeholder="Project Address">
+                        <input type="date" id="projectDate">
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="generateQuote()">
+                        📄 Generate Quote
+                    </button>
+                    <button class="btn btn-success" onclick="presentToCustomer()">
+                        👥 Present to Customer
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features-section">
+            <h2>Why Choose QuoteVision Pro?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>31% More Accurate</h3>
+                    <p>AI-powered calculations reduce estimation errors that can bankrupt contractors</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>60% Time Savings</h3>
+                    <p>Automated takeoffs and pricing eliminate hours of manual calculation</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Visual Clarity</h3>
+                    <p>Color-coded trade visualization helps customers understand project scope</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Mobile Ready</h3>
+                    <p>Present quotes on-site with tablet-optimized customer interface</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔗</div>
+                    <h3>Integrations</h3>
+                    <p>Connect with QuickBooks, supplier catalogs, and project management tools</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Win More Bids</h3>
+                    <p>Professional presentations that build trust and close more deals</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="pricing-section">
+            <h2>Simple, Transparent Pricing</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Starter</h3>
+                    <div class="price">$199<span>/month</span></div>
+                    <ul>
+                        <li>5 projects per month</li>
+                        <li>Basic 3D visualization</li>
+                        <li>Color-coded trades</li>
+                        <li>PDF quote generation</li>
+                        <li>Email support</li>
+                    </ul>
+                    <button class="btn btn-outline">Start Free Trial</button>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="badge">Most Popular</div>
+                    <h3>Professional</h3>
+                    <div class="price">$399<span>/month</span></div>
+                    <ul>
+                        <li>Unlimited projects</li>
+                        <li>Advanced AI features</li>
+                        <li>Mobile presentation mode</li>
+                        <li>Supplier integrations</li>
+                        <li>Priority support</li>
+                    </ul>
+                    <button class="btn btn-primary">Start Free Trial</button>
+                </div>
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <div class="price">$799<span>/month</span></div>
+                    <ul>
+                        <li>Multi-user accounts</li>
+                        <li>API access</li>
+                        <li>Custom integrations</li>
+                        <li>White-label options</li>
+                        <li>Dedicated support</li>
+                    </ul>
+                    <button class="btn btn-outline">Contact Sales</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <h2>Ready to Transform Your Quoting Process?</h2>
+            <p>Join hundreds of contractors who've increased their bid win rate with QuoteVision Pro</p>
+            <div class="contact-buttons">
+                <button class="btn btn-primary btn-large" onclick="startTrial()">Start Free 14-Day Trial</button>
+                <button class="btn btn-secondary btn-large" onclick="scheduleDemo()">Schedule Personal Demo</button>
+            </div>
+            <div class="contact-info">
+                <p>Questions? Email us at <a href="mailto:hello@quotevisionpro.com">hello@quotevisionpro.com</a></p>
+                <p>Or call <a href="tel:+1-555-QUOTE-PRO">+1 (555) QUOTE-PRO</a></p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>QuoteVision Pro</h4>
+                    <p>Transforming construction quoting with AI-powered 3D visualization</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <a href="#features">Features</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#demo">Demo</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <a href="#">Help Center</a>
+                    <a href="#">Training</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <a href="#">About</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Careers</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 QuoteVision Pro. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
